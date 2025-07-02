@@ -3,17 +3,19 @@ package org.example.javatests.util;
 public class StringUtilTest {
     public static void main(String[] args) {
 
+        //Llamamos al metodo repeat() para probarlo
         String result = StringUtil.repeat("Hola", 3);
+        //Testeamos el resultado de repeat con el metodo assertEquals que hicimos
         assertEquals(result, "holaholahola");
 
-        //Simplificamos el codigo Inline. Clic en menu Refactor, Inline Variable
+        //Simplificamos el codigo anterior a Inline. Clic en menu Refactor, Inline Variable
         //asi evitamos tener la variable result
         assertEquals(StringUtil.repeat("Hola", 1),"hola");
     }
 
 
     //Escribimos un metodo para comparar el resultado obtenido y el esperado
-    //Lanzamos una excepcion en casa de haber un error y nos indicara la linea donde
+    //Lanzamos una excepcion en caso de haber un error y nos indicara la linea donde
     //se provoco el error.
     //Un test unitario es para probar una parte especifica del programa, en este caso
     //testeamos un metodo
