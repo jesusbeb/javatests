@@ -6,15 +6,27 @@ import org.junit.Test;
 public class StringUtilTest {
 
     //Agregamos la anotacion Test de la libreria JUnit para indicar que es un metodo de Test
-    //No se utiliza el metodo main
+    //Lo recomendable es crear un metodo por test
     @Test
-    public void testRepeat() {
-
-        //Hacemos dos test al metodo repeat, pero ahora usando el metodo assertEquals de JUnit
-        //Enviamos como argumentos el String esperado y luego llamamos al metodo enviando los
-        //argumentos para testear
-        Assert.assertEquals("holaholahola", StringUtil.repeat("hola", 3));
+    public void repeat_string_once() {
         Assert.assertEquals("hola", StringUtil.repeat("hola", 1));
+    }
+
+    @Test
+    public void repeat_string_multiple_times() {
+        Assert.assertEquals("holaholahola", StringUtil.repeat("hola", 3));
+    }
+
+    @Test
+    public void repeat_string_zero_times() {
+        Assert.assertEquals("", StringUtil.repeat("hola", 0));
+    }
+
+    //Si se introduce un numero negativo, deberia crearse una excepcion que debemos
+    //lanzar en el metodo StringUtil
+    @Test(expected = IllegalArgumentException.class)
+    public void repeat_string_negative_times() {
+        Assert.assertEquals("hola", StringUtil.repeat("hola", -1));
     }
 
 }

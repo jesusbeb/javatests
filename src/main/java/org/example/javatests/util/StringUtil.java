@@ -9,6 +9,11 @@ public class StringUtil {
     //Metodo de prueba para repetir Strings
     public static String repeat(String str, int times){
 
+        //Excepcion en caso de introducir numeros negativos
+        if(times <0){
+            throw new IllegalArgumentException("numeros negativos no estan permitidos");
+        }
+
         String result = "";
 
         for (int i=0; i<times; i++){
