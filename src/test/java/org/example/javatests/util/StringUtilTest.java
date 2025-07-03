@@ -1,27 +1,20 @@
 package org.example.javatests.util;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 public class StringUtilTest {
-    public static void main(String[] args) {
 
-        //Llamamos al metodo repeat() para probarlo
-        String result = StringUtil.repeat("Hola", 3);
-        //Testeamos el resultado de repeat con el metodo assertEquals que hicimos
-        assertEquals(result, "holaholahola");
+    //Agregamos la anotacion Test de la libreria JUnit para indicar que es un metodo de Test
+    //No se utiliza el metodo main
+    @Test
+    public void testRepeat() {
 
-        //Simplificamos el codigo anterior a Inline. Clic en menu Refactor, Inline Variable
-        //asi evitamos tener la variable result
-        assertEquals(StringUtil.repeat("Hola", 1),"hola");
+        //Hacemos dos test al metodo repeat, pero ahora usando el metodo assertEquals de JUnit
+        //Enviamos como argumentos el String esperado y luego llamamos al metodo enviando los
+        //argumentos para testear
+        Assert.assertEquals("holaholahola", StringUtil.repeat("hola", 3));
+        Assert.assertEquals("hola", StringUtil.repeat("hola", 1));
     }
 
-
-    //Escribimos un metodo para comparar el resultado obtenido y el esperado
-    //Lanzamos una excepcion en caso de haber un error y nos indicara la linea donde
-    //se provoco el error.
-    //Un test unitario es para probar una parte especifica del programa, en este caso
-    //testeamos un metodo
-    private static void assertEquals(String actual, String expected) {
-        if (!actual.equals(expected)){
-            throw new RuntimeException(actual +" no es igual a expected: " +expected);
-        }
-    }
 }
