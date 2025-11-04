@@ -1,5 +1,6 @@
 package org.example.javatests.util;
 
+//Clase donde escribiremos un metodo para comprobar seguridad de passwords
 public class PasswordUtil {
 
     //Definimos tres niveles de seguridad

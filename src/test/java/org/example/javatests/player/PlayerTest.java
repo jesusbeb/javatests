@@ -17,7 +17,8 @@ public class PlayerTest {
 
         //Dice dice = new Dice(6); //Creamos el dado con su numero de caras
         //Creamos el dado usando la libreria mockito (un mock del dado o dado simulado)
-        //Simulamos que devuelve un 2. Usamos el metodo when de Mockito, para cuando el
+        //El metodo mock recibe como parametro la clase a simular
+        //Simulamos que devuelve un 2, usando el metodo when de Mockito, para cuando el
         //dado haga un roll entonces retorne el 2
         Dice dice = Mockito.mock(Dice.class);
         Mockito.when(dice.roll()).thenReturn(2);
