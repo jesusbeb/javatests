@@ -17,14 +17,21 @@ public class MovieRepositoryJdbc implements MovieRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+
     @Override
     public Movie findById(long id) {
-        return null;
+
+        //En el array se indica solo el valor necesario, en este caso el id
+        Object[] args = { id };
+
+        //queryForObject devuelve un solo objeto. En cambio query devuelve un Collection de objetos.
+        //El id se envia en los argumentos, y debido a la interfaz de jdbcTemplate debe ser un array de objetos
+        return jdbcTemplate.queryForObject("SELECT * FROM movies WHERE ID = ?", args, movieMapper);
     }
 
     @Override
     public Collection<Movie> findAll() {
-        //Se hace consulta a la BD y se transforma cada pelicula en un objeto Movie
+        //Se hace consulta a la BD y movieMapper transforma cada pelicula en un objeto Movie
         return jdbcTemplate.query("SELECT * FROM MOVIES", movieMapper);
     }
 
