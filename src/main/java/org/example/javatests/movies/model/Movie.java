@@ -1,5 +1,7 @@
 package org.example.javatests.movies.model;
 
+import java.util.Objects;
+
 public class Movie {
     //Atributos
     private Integer id;
@@ -36,5 +38,24 @@ public class Movie {
 
     public Genre getGenre() {
         return genre;
+    }
+
+    //Sobre escribimos estos metodos para que el test pueda comparar los objetos que
+    //llegan de la BD, con los objetos esperados
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return minutes == movie.minutes &&
+                Objects.equals(id, movie.id) &&
+                Objects.equals(name, movie.name) &&
+                genre == movie.genre;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, minutes, genre);
     }
 }
