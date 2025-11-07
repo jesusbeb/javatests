@@ -38,6 +38,10 @@ public class MovieRepositoryJdbc implements MovieRepository {
     @Override
     public void saveOrUpdate(Movie movie) {
 
+        //Insertamos la pelicula recibida por parametro, en la BD
+        jdbcTemplate.update("INSERT INTO movies(name, minutes, genre) values(?,?,?)",
+                movie.getName(), movie.getMinutes(), movie.getGenre().toString());
+
     }
 
 
