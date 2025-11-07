@@ -35,7 +35,8 @@ public class MovieServiceShould {
                         new Movie(4, "Super 8", 112, Genre.THRILLER),
                         new Movie(5, "Scream", 111, Genre.HORROR),
                         new Movie(6, "Home Alone", 103, Genre.COMEDY),
-                        new Movie(1, "Matrix", 136, Genre.ACTION)
+                        new Movie(7, "Matrix", 136, Genre.ACTION),
+                        new Movie(8, "Superman", 120, Genre.ACTION)
                 )
         );
         //Pasamos el mockito del repositorio al movieService
@@ -77,8 +78,15 @@ public class MovieServiceShould {
     @Test
     public void return_movies_by_duration(){
         Collection<Movie> movies = movieService.findMoviesByDuration(119);
-        assertThat(getMovieIds(movies), CoreMatchers.is(Arrays.asList(2,3,4,5,6))  );
+        assertThat( getMovieIds(movies), CoreMatchers.is(Arrays.asList(2,3,4,5,6)) );
     }
+
+    @Test
+    public void return_movies_by_name(){
+        Collection<Movie> movies = movieService.findMoviesByName("SUPER");
+        assertThat( getMovieIds(movies), CoreMatchers.is(Arrays.asList(4,8)) );
+    }
+
 
     //Metodo comun extraido
     private static List<Integer> getMovieIds(Collection<Movie> movies) {
